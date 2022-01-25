@@ -1,0 +1,21 @@
+{
+    "name": "JS-asincrono-Api",
+    "version": "1.0.0",
+    "description": "`` The Project contemplates the use of Api Javascript utilities mixed with some JSON server databases to back everything up ``",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "server"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Valentinpujiulatorres/JS-asincrono-Api.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Valentinpujiulatorres/JS-asincrono-Api/issues"
+    },
+    "homepage": "https://github.com/Valentinpujiulatorres/JS-asincrono-Api#readme"
+}
