@@ -1,0 +1,21 @@
+{
+    "Events" [{
+        "name": "Festival de Ciencias ",
+        "body": "Os queremos dar la bienvenida a nuestro evento sobre Ciencias e informar sobre todos los eventos de 2022 ",
+        "img": "https://festivaldelaciencia.cl/sitio/wp-content/uploads/2021/09/logo_feci.jpg"
+    }]
+
+    "posts": [{
+        "id": 1,
+        "title": "json-server",
+        "author": "typicode"
+    }],
+    "comments": [{
+        "id": 1,
+        "body": "some comment",
+        "postId": 1
+    }],
+    "profile": {
+        "name": "typicode"
+    }
+}

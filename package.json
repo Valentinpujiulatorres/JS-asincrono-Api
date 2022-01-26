@@ -5,7 +5,7 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "server"
+        "api": "json-server --watch db.json"
     },
     "repository": {
         "type": "git",
@@ -17,5 +17,8 @@
     "bugs": {
         "url": "https://github.com/Valentinpujiulatorres/JS-asincrono-Api/issues"
     },
-    "homepage": "https://github.com/Valentinpujiulatorres/JS-asincrono-Api#readme"
+    "homepage": "https://github.com/Valentinpujiulatorres/JS-asincrono-Api#readme",
+    "devDependencies": {
+        "json-server": "^0.17.0"
+    }
 }
