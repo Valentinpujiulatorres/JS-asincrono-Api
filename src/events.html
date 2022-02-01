@@ -22,7 +22,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        <a class="nav-link active" aria-current="page" href="HomePage.html">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="events.html">Events</a>
@@ -118,18 +118,21 @@
                       <p class="text-primary">Event EDITOR</p>
                       <form action="post" class="mx-auto text-start" >
                           <label for="TargetID"><b>ID de Elemento a Modificar :</b></label>
-                          <input type="text" name="TargetID" placeholder="REQUIRED"><br><br>
+                          <input type="text" name="TargetID" placeholder="REQUIRED" id="TargetID"><br><br>
+
                           <label for="name" class="text-start">Titulo del Evento : </label>
-                          <input type="text" name="name" id="CardName" placeholder="Opcional"><br><br>
+                          <input type="text" name="name" id="NewName" placeholder="Opcional"><br><br>
+
                           <label for="info" class="text-start" >Further information</label>
-                          <input type="text" name="info" id="CardInfo" placeholder="Opcional"><br><br>
+                          <input type="text" name="info" id="NewBody" placeholder="Opcional"><br><br>
+
                           <label for="img" class="text-start">Enlace a la imagen del poster:</label>
-                          <input type="text" name="img" id="CardImg" placeholder="Opcional">
+                          <input type="text" name="img" id="NewImg" placeholder="Opcional">
                       </form>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-success" onclick="ModifyRecord()">Save</button>
+                      <button type="button" class="btn btn-success" onclick="Edit()">Save</button>
                     </div>
                   </div>
                 </div>

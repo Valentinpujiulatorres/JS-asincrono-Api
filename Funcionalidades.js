@@ -24,7 +24,7 @@ function printData(Data) {
             Data.splice(i, 1);
         }
 
-        HTML += `<div class="card m-4" style="width: 18rem;">
+        HTML += `<div class="card m-4 mx-auto" style="width: 18rem;">
         <img src="${Data[i].img}" class="card-img-top " style="max-height:100% , min-height:400px" alt="...">
         <div class="card-body">
           <h5 class="card-title">${Data[i].name}</h5>
@@ -92,30 +92,59 @@ function DeleteRecord() {
 
 }
 
-function ModifyRecord() {
+function Edit() {
 
-    let ID = document.getElementById("TargetID").value;
-    let name = document.getElementById("NewName").value;
-    let body = document.getElementById("NewBody").value;
-    let img = document.getElementById("NewImg").value;
+    let ID = document.getElementById("TargetID").value
 
-    const data = { name: `${name}`, body: `${body}`, img: `${img}` };
+    let name = document.getElementById("NewName").value
+
+    let body = document.getElementById("NewBody").value
+
+    let img = document.getElementById("NewImg").value
+
+    let data1 = { name: `${name}`, body: `${body}`, img: `${img}` };
 
     fetch(`http://localhost:3000/Events/${ID}`, {
             method: 'PATCH', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(data),
+            body: JSON.stringify(data1),
         })
         .then(response => response.json())
-        .then(data => {
-            console.log('Success:', data);
+        .then(data1 => {
+            console.log('Success:', data1);
         })
         .catch((error) => {
             console.error('Error:', error);
         });
 
 
+
+}
+
+function Register() {
+    let mail = document.getElementById("RegisterMail").value
+    let passwd = document.getElementById("RegisterPassword").value
+
+    let content = { email: `${mail}`, password: `${passwd}` }
+
+    fetch(`http://localhost:3001/auth/register`, {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+
+            },
+            body: JSON.stringify(content),
+
+        })
+        .then(response => response.json())
+        .then(content => {
+            console.log('Success:', content);
+            alert("Usuario registrado correctamente")
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
 
 }
