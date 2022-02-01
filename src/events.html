@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../Funcionalidades.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
     <title>Crud Events</title>
 </head>
@@ -35,14 +37,104 @@
     </nav>
 
 
-    <div class=" text-center mt-5" id="DisplayContent">
+    <div class=" text-center mt-5 mx-auto" id="DisplayContent">
 
         <h3>Event Creator</h3>
         <p class=""><i>Create Usefull events to the comunity<i></p>
 
-        <div id="TriggerCRUD">
-            <button type="button" class="btn btn-success">New Record</button>
-        </div>
+        <div id="TriggerCRUD" class="container ">
+
+            <button type="button" class="btn btn-success mx-auto" data-bs-toggle="modal" data-bs-target="#AddRecord">New Record</button>
+
+            <button type="button" class="btn btn-warning mx-auto " data-bs-toggle="modal" data-bs-target="#Edit">Edit Record</button>
+
+            <button type="button" class="btn btn-danger  mx-auto " data-bs-toggle="modal" data-bs-target="#EraseRecord" >Erase Record</button>
+
+                <!-- NEW RECORD -->
+
+            <div class="modal fade" id="AddRecord" tabindex="-1">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">NEW RECORD</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center mx-auto">
+                      <p class="text-primary">Event Creator</p>
+                      <form action="post" class="mx-auto text-start" >
+                          <label for="name" class="text-start">Titulo del Evento : </label>
+                          <input type="text" name="name" id="CardName"><br><br>
+                          <label for="info" class="text-start">Further information</label>
+                          <input type="text" name="info" id="CardInfo"><br><br>
+                          <label for="img" class="text-start">Enlace a la imagen del poster:</label>
+                          <input type="text" name="img" id="CardImg">
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-success" onclick="NewRecord()">Save</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- ERASE RECORD -->
+
+            <div class="modal fade" id="EraseRecord" tabindex="-1">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">ERASE RECORD</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center mx-auto">
+                      <p class="text-primary">Event ERASER</p>
+                      <form action="post" class="mx-auto text-start" >
+                          <label for="name" class="text-start">ID del evento : </label>
+                          <input type="text" name="name" id="ID"><br><br>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-success" onclick="DeleteRecord()">Save</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+           <!-- EDIT RECORD -->
+
+            <div class="modal fade" id="Edit" tabindex="-1">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title">EDITOR</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center mx-auto">
+                      <p class="text-primary">Event Creator</p>
+                      <form action="post" class="mx-auto text-start" >
+                          <label for="name" class="text-start">Titulo del Evento : </label>
+                          <input type="text" name="name" id="CardName"><br><br>
+                          <label for="info" class="text-start">Further information</label>
+                          <input type="text" name="info" id="CardInfo"><br><br>
+                          <label for="img" class="text-start">Enlace a la imagen del poster:</label>
+                          <input type="text" name="img" id="CardImg">
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-success" onclick="ModifyRecord()">Save</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
 
     </div>
 
