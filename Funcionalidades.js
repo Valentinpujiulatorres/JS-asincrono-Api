@@ -16,7 +16,13 @@ Content = getData(myUrl);
 
 
 function printData(Data) {
+
     for (let i = 0; i < Data.length; i++) {
+
+        if (Data[i].name === "") {
+
+            Data.splice(i, 1);
+        }
 
         HTML += `<div class="card m-4" style="width: 18rem;">
         <img src="${Data[i].img}" class="card-img-top " style="max-height:100% , min-height:400px" alt="...">
@@ -56,7 +62,20 @@ function NewRecord() {
 }
 
 function DeleteRecord() {
-    let ID = document.getElementById("ID").value;
+
+    let ID = document.getElementById("ID").value
+    fetch(`http://localhost:3000/Events/${ID}`, {
+            method: 'DELETE', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+
+
 
     // console.log(HTML)
 
@@ -74,5 +93,29 @@ function DeleteRecord() {
 }
 
 function ModifyRecord() {
+
+    let ID = document.getElementById("TargetID").value;
+    let name = document.getElementById("NewName").value;
+    let body = document.getElementById("NewBody").value;
+    let img = document.getElementById("NewImg").value;
+
+    const data = { name: `${name}`, body: `${body}`, img: `${img}` };
+
+    fetch(`http://localhost:3000/Events/${ID}`, {
+            method: 'PATCH', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+
+
 
 }

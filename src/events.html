@@ -115,14 +115,16 @@
                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body text-center mx-auto">
-                      <p class="text-primary">Event Creator</p>
+                      <p class="text-primary">Event EDITOR</p>
                       <form action="post" class="mx-auto text-start" >
+                          <label for="TargetID"><b>ID de Elemento a Modificar :</b></label>
+                          <input type="text" name="TargetID" placeholder="REQUIRED"><br><br>
                           <label for="name" class="text-start">Titulo del Evento : </label>
-                          <input type="text" name="name" id="CardName"><br><br>
-                          <label for="info" class="text-start">Further information</label>
-                          <input type="text" name="info" id="CardInfo"><br><br>
+                          <input type="text" name="name" id="CardName" placeholder="Opcional"><br><br>
+                          <label for="info" class="text-start" >Further information</label>
+                          <input type="text" name="info" id="CardInfo" placeholder="Opcional"><br><br>
                           <label for="img" class="text-start">Enlace a la imagen del poster:</label>
-                          <input type="text" name="img" id="CardImg">
+                          <input type="text" name="img" id="CardImg" placeholder="Opcional">
                       </form>
                     </div>
                     <div class="modal-footer">
