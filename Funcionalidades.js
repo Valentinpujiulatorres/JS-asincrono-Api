@@ -129,22 +129,69 @@ function Register() {
 
     let content = { email: `${mail}`, password: `${passwd}` }
 
-    fetch(`http://localhost:3001/auth/register`, {
-            method: 'POST', // or 'PUT'
+
+    //Fetch de comprobacion de la existencia del usuario en cuestion 
+
+
+    fetch(`http://localhost:3001/auth/login`, {
+            method: 'GET', // or 'PUT'
             headers: {
+                'Authorization': 'Basic ' + btoa(`${mail}` + ':' + `${passwd}`),
                 'Content-Type': 'application/json',
 
             },
-            body: JSON.stringify(content),
 
         })
-        .then(response => response.json())
-        .then(content => {
-            console.log('Success:', content);
-            alert("Usuario registrado correctamente")
-        })
+        .then(response => console.log(response), alert("Usuario Existente"))
         .catch((error) => {
-            console.error('Error:', error);
+
+            fetch(`http://localhost:3001/auth/register`, {
+                    method: 'POST', // or 'PUT'
+                    headers: {
+                        'Content-Type': 'application/json',
+
+                    },
+                    body: JSON.stringify(content),
+
+                })
+                .then(response => response.json())
+                .then(content => {
+                    console.log('Success:', content);
+                    alert("Usuario registrado correctamente ")
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+
+
         });
+
+
+
+    //Fetch de Insercion de datos (Crear usuario en db)
+
+
+}
+
+function LogIn() {
+
+    let mail = document.getElementById("email").value
+    let passwd = document.getElementById("Password").value
+
+
+    fetch(`http://localhost:3001/auth/login`, {
+            method: 'GET', // or 'PUT'
+            headers: {
+                'Authorization': 'Basic ' + btoa(`${mail}` + ':' + `${passwd}`),
+                'Content-Type': 'application/json',
+
+            },
+
+        })
+        .then(response => console.log(response), alert("Succesfull login"), document.getElementById('response').innerHTML = `<a class="btn btn-primary" href="HomePage.html">Proceed HOME </a>`)
+        .catch((error) => {
+            alert("Error, Compruebe su Mail + Password")
+        });
+
 
 }
