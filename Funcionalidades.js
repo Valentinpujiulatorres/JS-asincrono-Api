@@ -142,26 +142,37 @@ function Register() {
             },
 
         })
-        .then(response => console.log(response), alert("Usuario Existente"))
+        .then(response => {
+            if (response.ok) {
+                alert("Este Usuario se encuentra ya registrado")
+
+
+            } else {
+
+
+                fetch(`http://localhost:3001/auth/register`, {
+                        method: 'POST', // or 'PUT'
+                        headers: {
+                            'Content-Type': 'application/json',
+
+                        },
+                        body: JSON.stringify(content),
+
+                    })
+                    .then(response => response.json())
+                    .then(content => {
+                        console.log('Success:', content);
+                        alert("Usuario registrado correctamente ")
+                    })
+                    .catch((error) => {
+                        console.error('Error:', error);
+                    });
+
+
+            }
+        })
         .catch((error) => {
 
-            fetch(`http://localhost:3001/auth/register`, {
-                    method: 'POST', // or 'PUT'
-                    headers: {
-                        'Content-Type': 'application/json',
-
-                    },
-                    body: JSON.stringify(content),
-
-                })
-                .then(response => response.json())
-                .then(content => {
-                    console.log('Success:', content);
-                    alert("Usuario registrado correctamente ")
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
 
 
         });
@@ -188,10 +199,22 @@ function LogIn() {
             },
 
         })
-        .then(response => console.log(response), alert("Succesfull login"), document.getElementById('response').innerHTML = `<a class="btn btn-primary" href="HomePage.html">Proceed HOME </a>`)
-        .catch((error) => {
-            alert("Error, Compruebe su Mail + Password")
-        });
+        .then(response => {
+            if (response.status === 401) {
+                alert("Error, Compruebe su Mail + Password")
+
+
+            } else {
+
+
+                console.log(response), alert("Succesfull login"), document.getElementById('response').innerHTML = `<a class="btn btn-primary" href="HomePage.html">Proceed HOME </a>`;
+            }
+        })
+
+    .catch((error) => {
+        console.log(error);
+
+    });
 
 
 }
